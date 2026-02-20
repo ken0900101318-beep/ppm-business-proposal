@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PPM 商業提案</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft JhengHei", sans-serif;
+            background: #000;
+            overflow: hidden;
+        }
+
+        .slides-container {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+        }
+
+        .slide {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: none;
+            padding: 60px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .slide.active {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 {
+            font-size: 4em;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        h2 {
+            font-size: 3em;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        h3 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        p, li {
+            font-size: 1.5em;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        ul {
+            list-style: none;
+            max-width: 900px;
+        }
+
+        li::before {
+            content: "✓ ";
+            color: #ffeb3b;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .emoji {
+            font-size: 2em;
+            margin-right: 15px;
+        }
+
+        .highlight {
+            background: rgba(255, 235, 59, 0.3);
+            padding: 5px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .subtitle {
+            font-size: 1.8em;
+            opacity: 0.9;
+            text-align: center;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            max-width: 1200px;
+            margin-top: 30px;
+        }
+
+        .card {
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .big-number {
+            font-size: 4em;
+            font-weight: bold;
+            color: #ffeb3b;
+            margin-bottom: 10px;
+        }
+
+        .navigation {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            font-size: 1.2em;
+            opacity: 0.6;
+        }
+
+        .slide-number {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            font-size: 1.2em;
+            opacity: 0.6;
+        }
+
+        table {
+            width: 100%;
+            max-width: 900px;
+            border-collapse: collapse;
+            margin: 30px 0;
+        }
+
+        th, td {
+            padding: 20px;
+            text-align: left;
+            border-bottom: 2px solid rgba(255,255,255,0.3);
+        }
+
+        th {
+            background: rgba(255,255,255,0.2);
+            font-size: 1.3em;
+        }
+
+        .problem {
+            color: #ff6b6b;
+        }
+
+        .solution {
+            color: #4ecdc4;
+        }
+
+        .center {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="slides-container">
+        <!-- Slide 1: 封面 -->
+        <div class="slide active">
+            <h1>🚀 PPM</h1>
+            <p class="subtitle">芭達雅專業管家</p>
+            <p class="subtitle" style="font-size: 1.3em; margin-top: 40px;">
+                讓女生收入翻倍的秘密武器
+            </p>
+        </div>
+
+        <!-- Slide 2: 問題 -->
+        <div class="slide">
+            <h2>💔 她們的痛點</h2>
+            <ul>
+                <li class="problem">客人說外語，聽不懂 = 錢飛了</li>
+                <li class="problem">客人太多，記不住誰是誰</li>
+                <li class="problem">不知道自己賺多少</li>
+                <li class="problem">約會時間常搞錯</li>
+                <li class="problem">重要客人沒特別經營</li>
+            </ul>
+        </div>
+
+        <!-- Slide 3: 解決方案 -->
+        <div class="slide">
+            <h2>✨ PPM 的解決方案</h2>
+            <ul>
+                <li class="solution">自動翻譯（1秒變泰文）</li>
+                <li class="solution">自動記錄客戶資料</li>
+                <li class="solution">自動統計收入</li>
+                <li class="solution">智慧行程管理</li>
+                <li class="solution">VIP 客戶優先顯示</li>
+            </ul>
+        </div>
+
+        <!-- Slide 4: 使用前 vs 使用後 -->
+        <div class="slide">
+            <h2>📊 使用前 vs 使用後</h2>
+            <table>
+                <tr>
+                    <th>項目</th>
+                    <th>使用前</th>
+                    <th>使用後</th>
+                </tr>
+                <tr>
+                    <td>語言溝通</td>
+                    <td class="problem">複製貼上 Google（慢）</td>
+                    <td class="solution">自動翻譯（1秒）</td>
+                </tr>
+                <tr>
+                    <td>客人管理</td>
+                    <td class="problem">腦袋記（常忘）</td>
+                    <td class="solution">系統記錄（不會忘）</td>
+                </tr>
+                <tr>
+                    <td>收入追蹤</td>
+                    <td class="problem">不知道賺多少</td>
+                    <td class="solution">清楚每天每月收入</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Slide 5: 五大功能 -->
+        <div class="slide">
+            <h2>🎯 五大核心功能</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>🌏 多語言翻譯</h3>
+                    <p>韓日中英印度文<br>全部自動翻成泰文</p>
+                </div>
+                <div class="card">
+                    <h3>👥 客戶資料庫</h3>
+                    <p>每個客人的小檔案<br>自動記錄所有資訊</p>
+                </div>
+                <div class="card">
+                    <h3>💰 收入統計</h3>
+                    <p>自動算錢<br>知道誰最大方</p>
+                </div>
+                <div class="card">
+                    <h3>📅 行程管理</h3>
+                    <p>不會約重複<br>自動提醒預約</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 6: 如何運作 -->
+        <div class="slide">
+            <h2>⚙️ 系統怎麼運作？</h2>
+            <div style="max-width: 900px; text-align: left;">
+                <p><span class="emoji">1️⃣</span> 客人傳韓文訊息</p>
+                <p><span class="emoji">2️⃣</span> 系統自動翻成泰文（1秒）</p>
+                <p><span class="emoji">3️⃣</span> 女生看到泰文 + 客戶資料</p>
+                <p><span class="emoji">4️⃣</span> 女生輸入泰文回覆</p>
+                <p><span class="emoji">5️⃣</span> 系統自動變韓文發給客人</p>
+                <p style="margin-top: 40px; text-align: center; font-size: 1.8em;">
+                    <span class="highlight">客人完全不知道有系統在幫忙</span>
+                </p>
+            </div>
+        </div>
+
+        <!-- Slide 7: 市場規模 -->
+        <div class="slide">
+            <h2>📈 市場有多大？</h2>
+            <div class="grid">
+                <div class="card center">
+                    <h3>芭達雅</h3>
+                    <div class="big-number">5,000+</div>
+                    <p>潛在用戶</p>
+                    <p class="highlight">年收入: 180 萬台幣</p>
+                </div>
+                <div class="card center">
+                    <h3>全泰國</h3>
+                    <div class="big-number">50,000+</div>
+                    <p>潛在用戶</p>
+                    <p class="highlight">年收入: 900 萬台幣</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 8: 定價 -->
+        <div class="slide">
+            <h2>💸 收費方式</h2>
+            <table>
+                <tr>
+                    <th>方案</th>
+                    <th>價格</th>
+                    <th>功能</th>
+                </tr>
+                <tr>
+                    <td>免費試用</td>
+                    <td>0 泰銖</td>
+                    <td>7 天體驗</td>
+                </tr>
+                <tr>
+                    <td>基礎版</td>
+                    <td class="highlight">199 泰銖/月</td>
+                    <td>翻譯 + CRM</td>
+                </tr>
+                <tr>
+                    <td>專業版</td>
+                    <td class="highlight">399 泰銖/月</td>
+                    <td>+ 收入分析</td>
+                </tr>
+                <tr>
+                    <td>VIP 版</td>
+                    <td class="highlight">699 泰銖/月</td>
+                    <td>+ 專人客服</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Slide 9: 為什麼划算 -->
+        <div class="slide">
+            <h2>🤔 為什麼划算？</h2>
+            <div style="max-width: 900px;">
+                <p style="font-size: 2em; margin-bottom: 40px;">
+                    如果系統幫女生多賺 <span class="highlight">10%</span>
+                </p>
+                <p style="font-size: 1.8em;">
+                    月收入 20,000 泰銖 → 多賺 2,000 泰銖
+                </p>
+                <p style="font-size: 1.8em; margin-bottom: 60px;">
+                    月收入 50,000 泰銖 → 多賺 5,000 泰銖
+                </p>
+                <p style="font-size: 2.5em; text-align: center;">
+                    只需付 <span class="highlight">199-399 泰銖</span>
+                </p>
+                <p style="font-size: 2em; text-align: center; margin-top: 40px; color: #ffeb3b;">
+                    投資回報率：<span class="big-number" style="font-size: 2em;">5-25 倍</span>
+                </p>
+            </div>
+        </div>
+
+        <!-- Slide 10: 推廣策略 -->
+        <div class="slide">
+            <h2>🚀 推廣策略</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Phase 1 (1-3月)</h3>
+                    <p>種子用戶</p>
+                    <ul style="font-size: 1.2em;">
+                        <li>10-20 人免費試用</li>
+                        <li>收集反饋優化</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Phase 2 (3-6月)</h3>
+                    <p>口碑推廣</p>
+                    <ul style="font-size: 1.2em;">
+                        <li>推薦獎勵機制</li>
+                        <li>LINE 群組推廣</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card" style="margin-top: 30px; max-width: 900px;">
+                <h3>Phase 3 (6-12月)</h3>
+                <p>規模化</p>
+                <ul style="font-size: 1.2em;">
+                    <li>Facebook / TikTok 廣告</li>
+                    <li>KOL 合作</li>
+                    <li>代理商體系</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 11: 合作模式 -->
+        <div class="slide">
+            <h2>🤝 合作機會</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>💼 代理商</h3>
+                    <p>幫忙推廣給女生</p>
+                    <p class="highlight">每成交 1 人<br>你拿 30-40% 分潤</p>
+                    <p style="margin-top: 20px;">例如：用戶付 299B<br>你拿 90-120B/月</p>
+                </div>
+                <div class="card">
+                    <h3>💰 投資人</h3>
+                    <p>投資開發成本</p>
+                    <p class="highlight">佔股 X%<br>未來分潤</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 12: 技術保證 -->
+        <div class="slide">
+            <h2>✅ 技術保證</h2>
+            <ul>
+                <li>系統穩定、安全</li>
+                <li>多語言翻譯準確度 >95%</li>
+                <li>資料加密保護隱私</li>
+                <li>24/7 運作不中斷</li>
+                <li>完全合法（CRM 軟體）</li>
+            </ul>
+            <p style="margin-top: 60px; text-align: center; font-size: 1.5em; opacity: 0.8;">
+                具體技術細節涉及商業機密<br>
+                簽署 NDA 後可詳談
+            </p>
+        </div>
+
+        <!-- Slide 13: 下一步 -->
+        <div class="slide">
+            <h2>📞 下一步</h2>
+            <div style="max-width: 900px;">
+                <p><span class="emoji">1️⃣</span> 簽署 NDA（保密協議）</p>
+                <p><span class="emoji">2️⃣</span> 看完整 Demo（實際操作）</p>
+                <p><span class="emoji">3️⃣</span> 討論合作細節（分潤比例）</p>
+                <p><span class="emoji">4️⃣</span> 正式簽約啟動合作</p>
+            </div>
+        </div>
+
+        <!-- Slide 14: Q&A -->
+        <div class="slide">
+            <h2>❓ 常見問題</h2>
+            <div style="max-width: 900px; text-align: left;">
+                <p><strong>Q: 這個合法嗎？</strong></p>
+                <p style="margin-bottom: 30px;">A: 完全合法！我們賣 CRM 軟體，就像 Salesforce。</p>
+                
+                <p><strong>Q: 會被封禁嗎？</strong></p>
+                <p style="margin-bottom: 30px;">A: 不會。使用官方 API，完全合規。</p>
+                
+                <p><strong>Q: 資料會外洩嗎？</strong></p>
+                <p style="margin-bottom: 30px;">A: 不會。所有資料加密，只有女生自己能看。</p>
+                
+                <p><strong>Q: 女生不會用怎麼辦？</strong></p>
+                <p>A: 系統超簡單，有教學影片 + 客服。</p>
+            </div>
+        </div>
+
+        <!-- Slide 15: 結尾 -->
+        <div class="slide">
+            <h1>💎 PPM</h1>
+            <p class="subtitle" style="font-size: 2em; margin-top: 40px;">
+                不只是工具<br>
+                而是女生的「收入加速器」
+            </p>
+            <p style="margin-top: 80px; font-size: 1.8em;">
+                準備好一起賺錢了嗎？
+            </p>
+        </div>
+    </div>
+
+    <div class="slide-number"></div>
+    <div class="navigation">← → 換頁　ESC 離開</div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        const slideNumber = document.querySelector('.slide-number');
+
+        function showSlide(n) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (n + totalSlides) % totalSlides;
+            slides[currentSlide].classList.add('active');
+            slideNumber.textContent = `${currentSlide + 1} / ${totalSlides}`;
+        }
+
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+
+        function prevSlide() {
+            showSlide(currentSlide - 1);
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                nextSlide();
+            } else if (e.key === 'ArrowLeft') {
+                prevSlide();
+            } else if (e.key === 'Escape') {
+                showSlide(0);
+            }
+        });
+
+        // 點擊換頁
+        document.addEventListener('click', (e) => {
+            if (e.clientX > window.innerWidth / 2) {
+                nextSlide();
+            } else {
+                prevSlide();
+            }
+        });
+
+        // 初始化
+        slideNumber.textContent = `1 / ${totalSlides}`;
+    </script>
+</body>
+</html>

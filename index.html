@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PPM 商業提案 - 密碼保護</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft JhengHei", sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .login-container {
+            background: white;
+            padding: 50px 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        h1 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 40px;
+            font-size: 1.1em;
+        }
+
+        .lock-icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: 100%;
+            padding: 15px 20px;
+            font-size: 1.1em;
+            border: 2px solid #667eea;
+            border-radius: 10px;
+            outline: none;
+            margin-bottom: 20px;
+            transition: all 0.3s;
+        }
+
+        input:focus {
+            border-color: #764ba2;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            font-size: 1.2em;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .error {
+            color: #ff6b6b;
+            margin-top: 15px;
+            display: none;
+        }
+
+        .menu {
+            display: none;
+            text-align: left;
+        }
+
+        .menu h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+
+        .menu-item {
+            background: #f8f9fa;
+            padding: 15px 20px;
+            margin-bottom: 10px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .menu-item:hover {
+            background: #e9ecef;
+            transform: translateX(5px);
+        }
+
+        .menu-item .icon {
+            font-size: 1.5em;
+        }
+
+        .menu-item .title {
+            font-weight: bold;
+            font-size: 1.1em;
+            color: #333;
+        }
+
+        .menu-item .desc {
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div id="loginForm">
+            <div class="lock-icon">🔒</div>
+            <h1>PPM 商業提案</h1>
+            <p class="subtitle">芭達雅專業管家</p>
+            <input type="password" id="password" placeholder="請輸入密碼" onkeypress="if(event.key==='Enter') checkPassword()">
+            <button onclick="checkPassword()">進入</button>
+            <p class="error" id="error">密碼錯誤，請重試</p>
+        </div>
+
+        <div id="menu" class="menu">
+            <h2>📂 文件清單</h2>
+            
+            <div class="menu-item" onclick="window.location.href='ppt.html'">
+                <div class="icon">🎬</div>
+                <div>
+                    <div class="title">互動式 PPT 簡報</div>
+                    <div class="desc">15 頁完整商業提案（推薦）</div>
+                </div>
+            </div>
+
+            <div class="menu-item" onclick="window.location.href='proposal.html'">
+                <div class="icon">📄</div>
+                <div>
+                    <div class="title">商業提案（人話版）</div>
+                    <div class="desc">淺顯易懂的文字版提案</div>
+                </div>
+            </div>
+
+            <div class="menu-item" onclick="window.location.href='flowchart.html'">
+                <div class="icon">📊</div>
+                <div>
+                    <div class="title">系統流程圖</div>
+                    <div class="desc">6 種視角的系統運作流程</div>
+                </div>
+            </div>
+
+            <div class="menu-item" onclick="window.location.href='guide.html'">
+                <div class="icon">📖</div>
+                <div>
+                    <div class="title">使用說明</div>
+                    <div class="desc">文件使用指南與保密策略</div>
+                </div>
+            </div>
+
+            <div class="menu-item" onclick="window.location.href='nda.html'">
+                <div class="icon">🔐</div>
+                <div>
+                    <div class="title">NDA 保密協議範本</div>
+                    <div class="desc">與合作夥伴簽約使用</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const correctPassword = 'zxc88888';
+
+        function checkPassword() {
+            const input = document.getElementById('password').value;
+            const error = document.getElementById('error');
+            
+            if (input === correctPassword) {
+                document.getElementById('loginForm').style.display = 'none';
+                document.getElementById('menu').style.display = 'block';
+                localStorage.setItem('ppm_auth', 'true');
+            } else {
+                error.style.display = 'block';
+                document.getElementById('password').value = '';
+                setTimeout(() => {
+                    error.style.display = 'none';
+                }, 3000);
+            }
+        }
+
+        // 檢查是否已登入
+        window.onload = function() {
+            if (localStorage.getItem('ppm_auth') === 'true') {
+                document.getElementById('loginForm').style.display = 'none';
+                document.getElementById('menu').style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>

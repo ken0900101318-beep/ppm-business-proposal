@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PPM 使用說明</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft JhengHei", sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 60px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        h1 { color: #667eea; margin-bottom: 30px; font-size: 2.5em; }
+        h2 { color: #764ba2; margin-top: 40px; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid #667eea; }
+        h3 { color: #667eea; margin-top: 30px; margin-bottom: 15px; }
+        p { line-height: 1.8; margin-bottom: 15px; color: #333; }
+        ul, ol { margin-left: 30px; margin-bottom: 20px; line-height: 1.8; }
+        li { margin-bottom: 10px; }
+        code { background: #f8f9fa; padding: 2px 6px; border-radius: 3px; font-family: "Monaco", "Courier New", monospace; }
+        pre { background: #f8f9fa; padding: 20px; border-radius: 10px; overflow-x: auto; margin-bottom: 20px; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        th, td { padding: 12px; text-align: left; border-bottom: 1px solid #ddd; }
+        th { background: #f8f9fa; font-weight: bold; }
+        blockquote { border-left: 4px solid #667eea; padding-left: 20px; margin: 20px 0; color: #666; font-style: italic; }
+        .back-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 10px;
+            text-decoration: none;
+            margin-bottom: 30px;
+            transition: all 0.3s;
+        }
+        .back-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-btn">← 返回首頁</a>
+        <h1>PPM 專案完整文件包</h1>
+<h2>📦 文件清單</h2>
+<h3>1. <strong>PPM商業提案_人話版.md</strong></h3>
+<ul>
+<li><strong>用途：</strong> 給合作夥伴看的文字版提案</li>
+<li><strong>特點：</strong> 淺顯易懂、不洩漏技術細節</li>
+<li><strong>內容：</strong> </li>
+<li>痛點分析</li>
+<li>解決方案</li>
+<li>五大功能</li>
+<li>市場規模</li>
+<li>定價策略</li>
+<li>合作模式</li>
+</ul>
+<hr />
+<h3>2. <strong>PPM系統流程圖.md</strong></h3>
+<ul>
+<li><strong>用途：</strong> 系統運作視覺化說明</li>
+<li><strong>特點：</strong> 包含 6 種不同視角的流程圖</li>
+<li><strong>內容：</strong></li>
+<li>整體系統架構圖</li>
+<li>使用流程圖（女生視角）</li>
+<li>核心功能模組圖</li>
+<li>資料流向圖</li>
+<li>商業模式流程圖</li>
+<li>技術架構簡圖（對外版）</li>
+</ul>
+<p><strong>使用方法：</strong>
+- Mermaid 語法可以在 GitHub / Notion / VS Code 直接渲染
+- 或使用線上工具轉成圖片：https://mermaid.live/</p>
+<hr />
+<h3>3. <strong>PPM商業提案.html</strong></h3>
+<ul>
+<li><strong>用途：</strong> 互動式 PPT 簡報</li>
+<li><strong>特點：</strong> 網頁版，可直接用瀏覽器播放</li>
+<li><strong>內容：</strong> 15 頁完整簡報</li>
+<li>Slide 1: 封面</li>
+<li>Slide 2: 痛點分析</li>
+<li>Slide 3: 解決方案</li>
+<li>Slide 4: 使用前 vs 使用後</li>
+<li>Slide 5: 五大核心功能</li>
+<li>Slide 6: 系統運作流程</li>
+<li>Slide 7: 市場規模</li>
+<li>Slide 8: 定價方式</li>
+<li>Slide 9: 投資回報率</li>
+<li>Slide 10: 推廣策略</li>
+<li>Slide 11: 合作機會</li>
+<li>Slide 12: 技術保證</li>
+<li>Slide 13: 下一步</li>
+<li>Slide 14: 常見問題</li>
+<li>Slide 15: 結尾</li>
+</ul>
+<p><strong>操作方式：</strong>
+- 用瀏覽器打開 HTML 檔案
+- 按「→」下一頁
+- 按「←」上一頁
+- 按「ESC」回到首頁
+- 點擊右半邊 = 下一頁
+- 點擊左半邊 = 上一頁</p>
+<hr />
+<h2>🎯 使用情境</h2>
+<h3>情境 1：線上會議（推薦）</h3>
+<ol>
+<li>打開 <code>PPM商業提案.html</code></li>
+<li>全螢幕播放（F11）</li>
+<li>邊講邊翻頁</li>
+</ol>
+<h3>情境 2：面對面會議</h3>
+<ol>
+<li>打開 <code>PPM商業提案.html</code></li>
+<li>投影到大螢幕</li>
+<li>用鍵盤翻頁</li>
+</ol>
+<h3>情境 3：發送文件</h3>
+<ol>
+<li>發送 <code>PPM商業提案_人話版.md</code>（可轉成 PDF）</li>
+<li>附上 <code>PPM系統流程圖.md</code> 的截圖</li>
+</ol>
+<h3>情境 4：技術討論</h3>
+<ol>
+<li>使用 <code>PPM系統流程圖.md</code> 中的詳細流程圖</li>
+<li>配合口頭說明</li>
+</ol>
+<hr />
+<h2>🔒 保密策略</h2>
+<h3>什麼可以給合作夥伴？</h3>
+<p>✅ <strong>人話版商業提案</strong> - 完整商業模式
+✅ <strong>簡化版流程圖</strong> - 讓他們理解系統運作
+✅ <strong>PPT 簡報</strong> - 展示價值與市場</p>
+<h3>什麼不能給？</h3>
+<p>❌ <strong>具體 API 串接代碼</strong>
+❌ <strong>資料庫結構設計</strong>
+❌ <strong>AI 模型訓練方法</strong>
+❌ <strong>完整技術文檔</strong></p>
+<h3>給之前先做什麼？</h3>
+<p>📝 <strong>簽署 NDA（保密協議）</strong>
+- 保護雙方商業機密
+- 防止技術被抄襲
+- 明確合作關係</p>
+<hr />
+<h2>📊 文件轉換方法</h2>
+<h3>Markdown → PDF</h3>
+<p><strong>方法 1：使用線上工具</strong>
+- 網站：https://md2pdf.netlify.app/
+- 上傳 .md 檔案 → 下載 PDF</p>
+<p><strong>方法 2：使用 VS Code</strong>
+- 安裝插件：Markdown PDF
+- 右鍵 → Export (PDF)</p>
+<h3>流程圖 → 圖片</h3>
+<p><strong>方法 1：使用 Mermaid Live</strong>
+- 網站：https://mermaid.live/
+- 複製 Mermaid 代碼 → 下載 PNG/SVG</p>
+<p><strong>方法 2：使用截圖工具</strong>
+- 在支援 Mermaid 的平台渲染（如 GitHub）
+- 直接截圖</p>
+<h3>HTML PPT → PDF</h3>
+<p><strong>方法 1：瀏覽器列印</strong>
+- 打開 HTML 檔案
+- Ctrl+P（列印）
+- 選擇「另存為 PDF」
+- 勾選「背景圖形」</p>
+<p><strong>方法 2：線上轉換</strong>
+- 網站：https://www.web2pdfconvert.com/
+- 上傳 HTML → 下載 PDF</p>
+<hr />
+<h2>🚀 下一步建議</h2>
+<h3>立即行動：</h3>
+<ol>
+<li>✅ 閱讀所有文件</li>
+<li>✅ 練習播放 PPT（熟悉內容）</li>
+<li>✅ 準備 NDA 範本</li>
+<li>✅ 列出潛在合作夥伴名單</li>
+</ol>
+<h3>準備會議：</h3>
+<ol>
+<li>✅ 預約合作夥伴會議</li>
+<li>✅ 發送 PPT HTML 檔案（讓他們先看）</li>
+<li>✅ 準備 Demo（如果有）</li>
+<li>✅ 準備合約範本</li>
+</ol>
+<h3>技術準備：</h3>
+<ol>
+<li>⚠️ 開發 MVP（最小可行產品）</li>
+<li>⚠️ 找 2-3 個種子用戶測試</li>
+<li>⚠️ 收集真實反饋</li>
+<li>⚠️ 優化產品</li>
+</ol>
+<hr />
+<h2>💡 常見問題</h2>
+<p><strong>Q: 如果合作夥伴要求看完整技術文檔？</strong>
+A: 先簽 NDA，再提供部分技術說明（不含核心代碼）。</p>
+<p><strong>Q: 可以用這些文件去找投資人嗎？</strong>
+A: 可以！但建議先有 MVP Demo 會更有說服力。</p>
+<p><strong>Q: PPT 可以修改嗎？</strong>
+A: 當然！HTML 檔案可以用任何文字編輯器修改。</p>
+<p><strong>Q: 流程圖太技術性，合作夥伴看不懂？</strong>
+A: 只給「圖 1: 整體系統架構圖」和「圖 5: 商業模式流程圖」就好。</p>
+<hr />
+<p><strong>製作日期：</strong> 2026-02-20<br />
+<strong>版本：</strong> 1.0<br />
+<strong>製作人：</strong> OpenClaw AI Assistant</p>
+    </div>
+</body>
+</html>
