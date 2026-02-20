@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PPM - ผู้จัดการมืออาชีพ พัทยา</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Sarabun", "Noto Sans Thai", sans-serif;
+            background: #000;
+            overflow: hidden;
+        }
+
+        .slides-container {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+        }
+
+        .slide {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: none;
+            padding: 60px;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: white;
+        }
+
+        .slide.active {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 {
+            font-size: 4em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            background: linear-gradient(135deg, #d4af37 0%, #f4c2c2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        h2 {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            text-align: center;
+            background: linear-gradient(135deg, #d4af37 0%, #f4c2c2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        h3 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            color: #ffd700;
+        }
+
+        .thai {
+            font-size: 1.8em;
+            line-height: 1.8;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .chinese {
+            font-size: 1.3em;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            color: #d4af37;
+            opacity: 0.8;
+        }
+
+        ul {
+            list-style: none;
+            max-width: 900px;
+        }
+
+        li::before {
+            content: "✓ ";
+            color: #ffd700;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .emoji {
+            font-size: 2em;
+            margin-right: 15px;
+        }
+
+        .highlight {
+            background: linear-gradient(135deg, #d4af37 20%, #f4c2c2 80%);
+            padding: 5px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            color: #1a1a1a;
+        }
+
+        .subtitle {
+            font-size: 1.6em;
+            opacity: 0.9;
+            text-align: center;
+            color: #d4af37;
+            margin-bottom: 15px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            max-width: 1100px;
+            margin-top: 25px;
+        }
+
+        .card {
+            background: rgba(212, 175, 55, 0.1);
+            padding: 25px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .navigation {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            font-size: 1.2em;
+            opacity: 0.6;
+            color: #d4af37;
+        }
+
+        .slide-number {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            font-size: 1.2em;
+            opacity: 0.6;
+            color: #d4af37;
+        }
+
+        table {
+            width: 100%;
+            max-width: 900px;
+            border-collapse: collapse;
+            margin: 25px 0;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 2px solid rgba(212, 175, 55, 0.3);
+        }
+
+        th {
+            background: rgba(212, 175, 55, 0.2);
+            font-size: 1.2em;
+            color: #ffd700;
+        }
+
+        .problem {
+            color: #ff6b6b;
+        }
+
+        .solution {
+            color: #ffd700;
+        }
+
+        .lang-toggle {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            background: rgba(212, 175, 55, 0.2);
+            padding: 10px 20px;
+            border-radius: 10px;
+            border: 1px solid rgba(212, 175, 55, 0.5);
+            color: #ffd700;
+            font-size: 1em;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="slides-container">
+        <!-- Slide 1: 封面 -->
+        <div class="slide active">
+            <h1>🚀 PPM</h1>
+            <p class="subtitle thai">ผู้จัดการมืออาชีพ พัทยา</p>
+            <p class="subtitle chinese">芭達雅專業管家</p>
+            <p class="subtitle thai" style="font-size: 1.3em; margin-top: 40px;">
+                เครื่องมือที่ช่วยให้รายได้ของคุณเพิ่มขึ้นเป็นสองเท่า
+            </p>
+            <p class="subtitle chinese" style="font-size: 1.1em;">
+                讓你收入翻倍的秘密武器
+            </p>
+        </div>
+
+        <!-- Slide 2: 問題 -->
+        <div class="slide">
+            <h2>💔 ปัญหาที่คุณพบ / 你遇到的問題</h2>
+            <div style="max-width: 900px; text-align: left;">
+                <p class="thai problem">✗ ลูกค้าพูดภาษาต่างประเทศ ฟังไม่รู้เรื่อง = เสียเงิน</p>
+                <p class="chinese">客人說外語，聽不懂 = 錢飛了</p>
+
+                <p class="thai problem">✗ ลูกค้าเยอะเกินไป จำไม่ได้ว่าใครเป็นใคร</p>
+                <p class="chinese">客人太多，記不住誰是誰</p>
+
+                <p class="thai problem">✗ ไม่รู้ว่าได้เงินเท่าไหร่</p>
+                <p class="chinese">不知道自己賺多少</p>
+
+                <p class="thai problem">✗ นัดหมายสับสน เวลาผิดบ่อย</p>
+                <p class="chinese">約會時間常搞錯</p>
+
+                <p class="thai problem">✗ ไม่ได้ดูแลลูกค้าVIPเป็นพิเศษ</p>
+                <p class="chinese">重要客人沒特別經營</p>
+            </div>
+        </div>
+
+        <!-- Slide 3: 解決方案 -->
+        <div class="slide">
+            <h2>✨ PPM จะช่วยคุณได้อย่างไร / PPM 的解決方案</h2>
+            <div style="max-width: 900px; text-align: left;">
+                <p class="thai solution">✓ แปลภาษาอัตโนมัติ (1 วินาทีเป็นภาษาไทย)</p>
+                <p class="chinese">自動翻譯（1秒變泰文）</p>
+
+                <p class="thai solution">✓ บันทึกข้อมูลลูกค้าอัตโนมัติ</p>
+                <p class="chinese">自動記錄客戶資料</p>
+
+                <p class="thai solution">✓ สรุปรายได้อัตโนมัติ</p>
+                <p class="chinese">自動統計收入</p>
+
+                <p class="thai solution">✓ จัดการนัดหมายอัจฉริยะ</p>
+                <p class="chinese">智慧行程管理</p>
+
+                <p class="thai solution">✓ แสดงลูกค้า VIP ไว้ด้านบนสุด</p>
+                <p class="chinese">VIP 客戶優先顯示</p>
+            </div>
+        </div>
+
+        <!-- Slide 4: 使用前 vs 使用後 -->
+        <div class="slide">
+            <h2>📊 ก่อนใช้ vs หลังใช้ / 使用前 vs 使用後</h2>
+            <table>
+                <tr>
+                    <th>รายการ / 項目</th>
+                    <th>ก่อนใช้ / 使用前</th>
+                    <th>หลังใช้ / 使用後</th>
+                </tr>
+                <tr>
+                    <td>การสื่อสาร<br><span class="chinese">語言溝通</span></td>
+                    <td class="problem">Copy-Paste Google (ช้า)<br><span class="chinese">複製貼上Google（慢）</span></td>
+                    <td class="solution">แปลอัตโนมัติ (1วิ)<br><span class="chinese">自動翻譯（1秒）</span></td>
+                </tr>
+                <tr>
+                    <td>จัดการลูกค้า<br><span class="chinese">客人管理</span></td>
+                    <td class="problem">จำในหัว (ลืมบ่อย)<br><span class="chinese">腦袋記（常忘）</span></td>
+                    <td class="solution">ระบบจำ (ไม่ลืม)<br><span class="chinese">系統記錄（不忘）</span></td>
+                </tr>
+                <tr>
+                    <td>ติดตามรายได้<br><span class="chinese">收入追蹤</span></td>
+                    <td class="problem">ไม่รู้ได้เท่าไหร่<br><span class="chinese">不知道賺多少</span></td>
+                    <td class="solution">รู้รายได้รายวัน/เดือน<br><span class="chinese">清楚每天每月收入</span></td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Slide 5: 五大功能 -->
+        <div class="slide">
+            <h2>🎯 5 ฟังก์ชันหลัก / 五大核心功能</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>🌏 แปลหลายภาษา</h3>
+                    <p class="thai">เกาหลี ญี่ปุ่น จีน อังกฤษ อินเดีย<br>แปลเป็นไทยทั้งหมด</p>
+                    <p class="chinese">韓日中英印度文<br>全部自動翻成泰文</p>
+                </div>
+                <div class="card">
+                    <h3>👥 ฐานข้อมูลลูกค้า</h3>
+                    <p class="thai">โปรไฟล์ของลูกค้าแต่ละคน<br>บันทึกอัตโนมัติ</p>
+                    <p class="chinese">每個客人的小檔案<br>自動記錄所有資訊</p>
+                </div>
+                <div class="card">
+                    <h3>💰 สรุปรายได้</h3>
+                    <p class="thai">คำนวณเงินอัตโนมัติ<br>รู้ว่าใครใจกว้างที่สุด</p>
+                    <p class="chinese">自動算錢<br>知道誰最大方</p>
+                </div>
+                <div class="card">
+                    <h3>📅 จัดการตาราง</h3>
+                    <p class="thai">ไม่นัดซ้ำ<br>แจ้งเตือนอัตโนมัติ</p>
+                    <p class="chinese">不會約重複<br>自動提醒預約</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 6: 如何運作 -->
+        <div class="slide">
+            <h2>⚙️ ระบบทำงานอย่างไร? / 系統怎麼運作？</h2>
+            <div style="max-width: 1000px; text-align: left;">
+                <p class="thai">
+                    <span class="emoji">👤</span> ลูกค้าส่งข้อความมาที่ Telegram ส่วนตัวของคุณ
+                </p>
+                <p class="chinese">
+                    客人傳訊息到「你的個人 Telegram」
+                </p>
+                <p class="thai" style="margin-left: 80px; color: #ffd700;">
+                    ตัวอย่าง: ลูกค้าพูดเกาหลี "오빠 오늘 갈게"
+                </p>
+                <p class="chinese" style="margin-left: 80px;">
+                    例如：客人說韓文「오빠 오늘 갈게」
+                </p>
+                
+                <p class="thai" style="margin-top: 25px;">
+                    <span class="emoji">📤</span> คุณ「กดค้าง」→「Forward」ไปที่ PPM Bot
+                </p>
+                <p class="chinese">
+                    你「長按訊息」→「轉發」到 PPM Bot
+                </p>
+                <p class="thai" style="margin-left: 80px; opacity: 0.9;">
+                    (แค่ 2 วินาที กด 2 ครั้ง)
+                </p>
+                <p class="chinese" style="margin-left: 80px;">
+                    （只需 2 秒，點兩下）
+                </p>
+                
+                <p class="thai" style="margin-top: 25px;">
+                    <span class="emoji">⚡</span> ระบบแปลอัตโนมัติ + แสดงข้อมูลลูกค้า (1วิ)
+                </p>
+                <p class="chinese">
+                    系統自動翻譯 + 顯示客戶資料（1秒）
+                </p>
+                <p class="thai" style="margin-left: 80px; color: #ffd700;">
+                    ภาษาไทย: "พี่จะมาวันนี้" + ข้อมูล (ครั้งที่แล้วให้ 5000฿)
+                </p>
+                <p class="chinese" style="margin-left: 80px;">
+                    泰文：「哥哥今天會去」+ 客人資料（上次給 5000B）
+                </p>
+                
+                <p class="thai" style="margin-top: 25px;">
+                    <span class="emoji">💬</span> คุณพิมพ์ตอบเป็นภาษาไทยใน Web App
+                </p>
+                <p class="chinese">
+                    你在 Web App 輸入泰文回覆
+                </p>
+                <p class="thai" style="margin-left: 80px; color: #ffd700;">
+                    ตัวอย่าง: "ออเค นะคะ" → ระบบแสดง "OK, waiting~"
+                </p>
+                <p class="chinese" style="margin-left: 80px;">
+                    例如：「ออเค นะคะ」→ 系統顯示韓文「OK, waiting~」
+                </p>
+                
+                <p class="thai" style="margin-top: 25px;">
+                    <span class="emoji">📋</span> คุณ Copy ภาษาเกาหลี → Paste กลับไปหาลูกค้า
+                </p>
+                <p class="chinese">
+                    你「複製」韓文 →「貼回」客人 Telegram
+                </p>
+                
+                <p style="margin-top: 40px; text-align: center; font-size: 1.4em;">
+                    <span class="highlight thai">ลูกค้าเห็นแค่บัญชีส่วนตัวของคุณ ไม่รู้ว่ามีระบบช่วย</span>
+                </p>
+                <p class="chinese" style="text-align: center;">
+                    客人只看到你的個人帳號，完全不知道有系統
+                </p>
+            </div>
+        </div>
+
+        <!-- Slide 7: 需要準備什麼 -->
+        <div class="slide">
+            <h2>⚙️ ต้องเตรียมอะไรบ้าง? / 需要準備什麼？</h2>
+            <div style="max-width: 1000px;">
+                <div class="grid">
+                    <div class="card">
+                        <h3>👤 คุณต้องมี / 你需要有</h3>
+                        <p class="thai">✓ บัญชี Telegram ส่วนตัว (ที่มีอยู่แล้ว)</p>
+                        <p class="chinese">個人 Telegram 帳號（原本就有的）</p>
+                        
+                        <p class="thai">✓ สมาร์ทโฟน 1 เครื่อง</p>
+                        <p class="chinese">一支智慧型手機</p>
+                        
+                        <p class="thai">✓ อินเทอร์เน็ต</p>
+                        <p class="chinese">網路連線</p>
+                        
+                        <p style="margin-top: 20px; color: #ffd700; font-size: 1.1em;">
+                            <span class="thai">✅ ไม่ต้องเปลี่ยนบัญชี</span><br>
+                            <span class="chinese">✅ 不需要換帳號</span><br>
+                            <span class="thai">✅ ลูกค้ายังติดต่อบัญชีเดิม</span><br>
+                            <span class="chinese">✅ 客人還是聯絡原本的帳號</span>
+                        </p>
+                    </div>
+                    
+                    <div class="card">
+                        <h3>🤖 เราให้ / 我們提供</h3>
+                        <p class="thai">✓ PPM Bot (สมัครอัตโนมัติ)</p>
+                        <p class="chinese">PPM Bot 帳號（自動申請）</p>
+                        
+                        <p class="thai">✓ Web App จัดการ</p>
+                        <p class="chinese">Web App 管理介面</p>
+                        
+                        <p class="thai">✓ เครื่องมือแปลภาษา</p>
+                        <p class="chinese">翻譯引擎</p>
+                        
+                        <p class="thai">✓ ฐานข้อมูลลูกค้า</p>
+                        <p class="chinese">客戶資料庫</p>
+                        
+                        <p style="margin-top: 20px; color: #ffd700; font-size: 1.1em;">
+                            <span class="thai">✅ ติดตั้ง 1 คลิก</span><br>
+                            <span class="chinese">✅ 一鍵安裝</span><br>
+                            <span class="thai">✅ ตั้งค่าเสร็จใน 5 นาที</span><br>
+                            <span class="chinese">✅ 5 分鐘完成設定</span>
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="card" style="margin-top: 25px; background: rgba(255, 215, 0, 0.2);">
+                    <p class="thai" style="font-size: 1.3em; text-align: center; margin: 0;">
+                        <strong>จุดสำคัญ:</strong> ไม่ต้องเปลี่ยนบัญชี ลูกค้าไม่รู้ว่ามีระบบ!
+                    </p>
+                    <p class="chinese" style="text-align: center; margin-top: 10px;">
+                        <strong>重點：</strong> 不需要換帳號，客人看不出有系統！
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide-number"></div>
+    <div class="navigation">← → เปลี่ยนหน้า / 換頁　ESC ออก / 離開</div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        const slideNumber = document.querySelector('.slide-number');
+
+        function showSlide(n) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (n + totalSlides) % totalSlides;
+            slides[currentSlide].classList.add('active');
+            slideNumber.textContent = `${currentSlide + 1} / ${totalSlides}`;
+        }
+
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+
+        function prevSlide() {
+            showSlide(currentSlide - 1);
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                nextSlide();
+            } else if (e.key === 'ArrowLeft') {
+                prevSlide();
+            } else if (e.key === 'Escape') {
+                showSlide(0);
+            }
+        });
+
+        // 點擊換頁
+        document.addEventListener('click', (e) => {
+            if (e.clientX > window.innerWidth / 2) {
+                nextSlide();
+            } else {
+                prevSlide();
+            }
+        });
+
+        // 初始化
+        slideNumber.textContent = `1 / ${totalSlides}`;
+    </script>
+</body>
+</html>
